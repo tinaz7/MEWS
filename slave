@@ -1,0 +1,20 @@
+#define BUTTON_PIN 4
+int state = 20;
+
+void setup()
+{
+  Serial.begin(38400);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+}
+
+void loop()
+{
+  if(Serial.available() > 0){ // Checks whether data is comming from the serial port
+    state = Serial.read(); // Reads the data from the serial port
+  }
+
+  if (!digitalRead(BUTTON_PIN)) {
+    Serial.print(1);
+    delay(500);
+  } 
+}
